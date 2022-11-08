@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using SeleniumCShape10.PageObjects;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,11 +28,17 @@ namespace SeleniumCShape10.StepDefinitions
             new LoginPage(this.driver).UserLogin(UserNameValue, PasswordValue);
         }
 
-
-        [Then(@"I should see the successfully login message or User")]
-        public void ThenIShouldSeeTheSuccessfullyLoginMessageOrUser()
+        [Then(@"I should see the successfully login message or '([^']*)'")]
+        public void ThenIShouldSeeTheSuccessfullyLoginMessageOr(string UserValue)
         {
-            throw new PendingStepException();
+            new LoginPage(this.driver).SuccessfullyLoginValidation(UserValue);
+        }
+
+
+        [When(@"I select '([^']*)' from drop down box")]
+        public void WhenISelectFromDropDownBox(string locationValue)
+        {
+            new HotelsSearch(this.driver).SelectSearchHotelInformation(locationValue);
         }
 
     }
