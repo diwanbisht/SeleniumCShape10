@@ -34,12 +34,43 @@ namespace SeleniumCShape10.StepDefinitions
             new LoginPage(this.driver).SuccessfullyLoginValidation(UserValue);
         }
 
-
         [When(@"I select '([^']*)' from drop down box")]
         public void WhenISelectFromDropDownBox(string locationValue)
         {
-            new HotelsSearch(this.driver).SelectSearchHotelInformation(locationValue);
+            new HotelsSearch(this.driver).SelectLocationInformation(locationValue);
         }
+
+        [When(@"I select Hotel from drop down box")]
+        public void WhenISelectHotelFromDropDownBox()
+        {
+            new HotelsSearch(this.driver).HotelSearch("Hotel Creek");
+        }
+
+        [When(@"I select Room Type  from drop down box")]
+        public void WhenISelectRoomTypeFromDropDownBox()
+        {
+            
+        }
+
+        [When(@"I select Number of Rooms  from drop down box")]
+        public void WhenISelectNumberOfRoomsFromDropDownBox()
+        {
+            throw new PendingStepException();
+        }
+
+        [When(@"I enter CheckIndate")]
+        public void WhenIEnterCheckIndate()
+        {
+            throw new PendingStepException();
+        }
+
+        [When(@"I enter CheckOutDate")]
+        public void WhenIEnterCheckOutDate()
+        {
+            throw new PendingStepException();
+        }
+
+
 
     }
 }

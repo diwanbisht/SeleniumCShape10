@@ -125,6 +125,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.When("I select Number of Rooms  from drop down box", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+#line 13
+ testRunner.When("I enter CheckIndate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 14
+ testRunner.When("I enter CheckOutDate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
             }
             this.ScenarioCleanup();
         }

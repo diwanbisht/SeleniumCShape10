@@ -14,17 +14,12 @@ namespace SeleniumCShape10.PageObjects
         private readonly IWebDriver driver;
         public LoginPage(IWebDriver driver) => this.driver = driver;
 
-        /* public LoginPage(IWebDriver driver)
-         {
-             //this.driver = driver;
-         }*/
-
         IWebElement UserName => this.driver.FindElement(By.Name("username"));
         IWebElement Password => driver.FindElement(By.Name("password"));
         IWebElement LoginButton => driver.FindElement(By.Name("login"));
         IWebElement LoginValidation => driver.FindElement(By.Id("username_show"));
 
-        
+
         public void UserLogin(string userName, string password)
         {
             UserName.SendKeys(userName);

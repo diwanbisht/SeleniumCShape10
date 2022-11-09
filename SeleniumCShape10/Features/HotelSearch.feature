@@ -10,6 +10,8 @@ Scenario Outline: Validate Search Hotel
 	When I select Hotel from drop down box
 	When I select Room Type  from drop down box
 	When I select Number of Rooms  from drop down box
+	When I enter CheckIndate
+	When I enter CheckOutDate
 	
 
 	
