@@ -75,14 +75,20 @@ namespace SeleniumCShape10.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Validate Search Hotel")]
-        [NUnit.Framework.TestCaseAttribute("diwanbisht", "Test@1234", "London", null)]
-        public virtual void ValidateSearchHotel(string userName, string password, string location, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("diwanbisht", "Test@1234", "London", "Hotel Creek", "Standard", "2 - Two", "12/11/2022", "15/11/2022", "2 - Two", null)]
+        public virtual void ValidateSearchHotel(string userName, string password, string location, string hotels, string roomType, string numberofRooms, string checkInDate, string checkOutDate, string adultsperRoom, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("UserName", userName);
             argumentsOfScenario.Add("Password", password);
             argumentsOfScenario.Add("Location", location);
+            argumentsOfScenario.Add("Hotels", hotels);
+            argumentsOfScenario.Add("RoomType", roomType);
+            argumentsOfScenario.Add("NumberofRooms", numberofRooms);
+            argumentsOfScenario.Add("CheckInDate", checkInDate);
+            argumentsOfScenario.Add("CheckOutDate", checkOutDate);
+            argumentsOfScenario.Add("AdultsperRoom", adultsperRoom);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Search Hotel", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
@@ -114,22 +120,149 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then(string.Format("I should see the successfully login message or \'{0}\'", userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 9
- testRunner.When(string.Format("I select \'{0}\' from drop down box", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I select \'{0}\'Value from Location drop down box", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 10
- testRunner.When("I select Hotel from drop down box", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I select \'{0}\'Value from Hotels drop down box", hotels), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.When("I select Room Type  from drop down box", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I select \'{0}\'Value from Room Type drop down box", roomType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.When("I select Number of Rooms  from drop down box", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I select \'{0}\' Value from Number of Rooms drop down box", numberofRooms), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.When("I enter CheckIndate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I enter \'{0}\'Value from CheckIn field", checkInDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
- testRunner.When("I enter CheckOutDate", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And(string.Format("I enter \'{0}\'Value from Chcekout field", checkOutDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 15
+ testRunner.When(string.Format("I select \'{0}\'Value from AdultsperRoom drop down box", adultsperRoom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 16
+ testRunner.And("I click on \'Submit\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 17
+ testRunner.And("I click on \'radiobutton_0\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 18
+ testRunner.And("I click on \'continue\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate Book A Hotel")]
+        [NUnit.Framework.TestCaseAttribute("diwanbisht", "Test@1234", "London", "Hotel Creek", "Standard", "2 - Two", "12/11/2022", "15/11/2022", "2 - Two", "4111111111111111", "VISA", null)]
+        public virtual void ValidateBookAHotel(string userName, string password, string location, string hotels, string roomType, string numberofRooms, string checkInDate, string checkOutDate, string adultsperRoom, string cardNumber, string cardType, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("UserName", userName);
+            argumentsOfScenario.Add("Password", password);
+            argumentsOfScenario.Add("Location", location);
+            argumentsOfScenario.Add("Hotels", hotels);
+            argumentsOfScenario.Add("RoomType", roomType);
+            argumentsOfScenario.Add("NumberofRooms", numberofRooms);
+            argumentsOfScenario.Add("CheckInDate", checkInDate);
+            argumentsOfScenario.Add("CheckOutDate", checkOutDate);
+            argumentsOfScenario.Add("AdultsperRoom", adultsperRoom);
+            argumentsOfScenario.Add("CardNumber", cardNumber);
+            argumentsOfScenario.Add("CardType", cardType);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate Book A Hotel", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 29
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 30
+ testRunner.Given("I Navigated to Test Web Site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 31
+ testRunner.When(string.Format("I enter the \'{0}\' and \'{1}\'", userName, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 32
+ testRunner.Then(string.Format("I should see the successfully login message or \'{0}\'", userName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 33
+ testRunner.When(string.Format("I select \'{0}\'Value from Location drop down box", location), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 34
+ testRunner.When(string.Format("I select \'{0}\'Value from Hotels drop down box", hotels), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 35
+ testRunner.When(string.Format("I select \'{0}\'Value from Room Type drop down box", roomType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 36
+ testRunner.When(string.Format("I select \'{0}\' Value from Number of Rooms drop down box", numberofRooms), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 37
+ testRunner.When(string.Format("I enter \'{0}\'Value from CheckIn field", checkInDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 38
+ testRunner.And(string.Format("I enter \'{0}\'Value from Chcekout field", checkOutDate), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 39
+ testRunner.When(string.Format("I select \'{0}\'Value from AdultsperRoom drop down box", adultsperRoom), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 40
+ testRunner.And("I click on \'Submit\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 41
+ testRunner.And("I click on \'radiobutton_0\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 42
+ testRunner.And("I click on \'continue\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 43
+ testRunner.When("I enter user First Name as \'Diwan\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 44
+ testRunner.When("I enter user Last Name as \'Bisht\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 45
+ testRunner.When("I enter user Address as \'B100, New Delhi -110002\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 46
+ testRunner.When(string.Format("I enter user \'{0}\' Card Number", cardNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 47
+ testRunner.When(string.Format("I select \'{0}\'from the dropdwon", cardType), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 48
+ testRunner.When("I enter Card Expiry Year as \'2022\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 49
+ testRunner.When("I select Card Expiry Month as \'June\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 50
+ testRunner.When("I enter enter \'123\' as CVV number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 51
+ testRunner.And("I click on \'book_now\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 52
+ testRunner.Then("I should be navigated to \'Booking Confirmation\' Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 53
+ testRunner.And("I should get the Order Number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
