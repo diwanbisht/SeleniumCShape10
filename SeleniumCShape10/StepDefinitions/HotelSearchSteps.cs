@@ -10,10 +10,17 @@ using System.Threading.Tasks;
 namespace SeleniumCShape10.StepDefinitions
 {
     [Binding]
-    public class HotelSearchSteps : BaseConfiguration
+    public class HotelSearchSteps : SpecflowBaseConfiguration
     {
-        private readonly IWebDriver driver;
-        public HotelSearchSteps(IWebDriver driver) => this.driver = driver;
+      
+       // private readonly HomePage homePage;
+
+      
+        public HotelSearchSteps(SeleniumContext seleniumContext)
+            : base((BoDi.IObjectContainer)seleniumContext)
+        {
+           // this.homePage = new HomePage(this.Driver);
+        }
 
 
     }

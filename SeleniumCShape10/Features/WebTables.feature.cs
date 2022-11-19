@@ -122,7 +122,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("I validate all the values from specific columns as \'Country\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 12
- testRunner.Then("I validate all the values from specific columns by ColumnInxex as 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I validate all the values from specific columns by ColumnIndex as 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

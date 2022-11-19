@@ -8,19 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using SeleniumCShape10.Hooks;
 
 namespace SeleniumCShape10.StepDefinitions
 {
     [Binding]
-    public class LoginSteps
+    public class LoginSteps : BaseTestSteps
     {
-        IWebDriver driver = new ChromeDriver();
+        // private readonly ReportDefinition reportDefinition;
+        private readonly ScenarioContext scenarioContext;
 
+        public LoginSteps(SeleniumContext seleniumContext, ScenarioContext scenarioContext)
+          : base(seleniumContext)
+        {
+            //this.reportDefinition = new ReportDefinition(this.Driver);
+            this.scenarioContext = scenarioContext;
+        }
 
         [Given(@"I Navigated to Test Web Site")]
         public void GivenINavigatedToTestWebSite()
         {
-            driver.Navigate().GoToUrl("https://adactinhotelapp.com/index.php");
+           this.driver.Navigate().GoToUrl("https://adactinhotelapp.com/index.php");
             driver.Manage().Window.Maximize();
         }
 
@@ -104,7 +112,7 @@ namespace SeleniumCShape10.StepDefinitions
             new LoginPage(driver).AddressInputArea.SendKeys(inputAddress);
         }
 
-    
+
         [When(@"I enter user '([^']*)' Card Number")]
         public void WhenIEnterUserCardNumber(string carNumber)
         {
@@ -136,12 +144,12 @@ namespace SeleniumCShape10.StepDefinitions
             new LoginPage(driver).CVV.SendKeys(cVV);
         }
 
-      
+
         [Then(@"I should be navigated to '([^']*)' Page")]
         public void ThenIShouldBeNavigatedToPage(string bookingCofirmation)
         {
-           Thread.Sleep(5000);
-           string bookingValue = new LoginPage(driver).BookingConfirmation.Text;
+            Thread.Sleep(5000);
+            string bookingValue = new LoginPage(driver).BookingConfirmation.Text;
             Assert.IsTrue(bookingValue.Contains(bookingCofirmation), "Value not matched");
         }
 
@@ -153,7 +161,7 @@ namespace SeleniumCShape10.StepDefinitions
             {
                 Console.WriteLine(OrderName);
             }
-           Assert.IsNotNull(OrderName);
+            Assert.IsNotNull(OrderName);
         }
 
 
