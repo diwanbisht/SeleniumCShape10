@@ -51,7 +51,7 @@ namespace SeleniumCShape10.Commons
         public static void TakeScreenShot()
         {
 
-            ITakesScreenshot screenShot = seleniumContext.
+           // ITakesScreenshot screenShot = seleniumContext.
             /* ITakesScreenshot screenshotDriver = seleniumContext.webDriver as ITakesScreenshot;
 
              Screenshot screenshot = screenshotDriver.GetScreenshot();
