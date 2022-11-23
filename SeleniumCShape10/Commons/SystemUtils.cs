@@ -10,9 +10,13 @@ using System.Threading.Tasks;
 
 namespace SeleniumCShape10.Commons
 {
-    public class SystemUtils 
-    {
-        
+    public class SystemUtils  : SpecflowBaseConfiguration
+    {      
+        public SystemUtils(SeleniumContext seleniumContext)
+          : base((BoDi.IObjectContainer)seleniumContext)
+        {
+            // this.homePage = new HomePage(this.Driver);
+        }
 
         public static string GetChromeDriverPath()
         {
@@ -47,6 +51,7 @@ namespace SeleniumCShape10.Commons
         public static void TakeScreenShot()
         {
 
+            ITakesScreenshot screenShot = seleniumContext.
             /* ITakesScreenshot screenshotDriver = seleniumContext.webDriver as ITakesScreenshot;
 
              Screenshot screenshot = screenshotDriver.GetScreenshot();

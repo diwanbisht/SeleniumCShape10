@@ -11,7 +11,6 @@ namespace SeleniumCShape10.Hooks
     [Binding]
     public class SpecflowBaseConfiguration
     {
-
         private static SeleniumContext seleniumContext;
         private static ExtentTest featureName;
         private static ExtentTest scenario;
@@ -46,7 +45,7 @@ namespace SeleniumCShape10.Hooks
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
-            new SeleniumContext(_WebDriver).LoginToApplication();
+           // new SeleniumContext(_WebDriver).LoginToApplication();
         }
 
 

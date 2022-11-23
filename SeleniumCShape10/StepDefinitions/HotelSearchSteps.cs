@@ -11,11 +11,9 @@ namespace SeleniumCShape10.StepDefinitions
 {
     [Binding]
     public class HotelSearchSteps : SpecflowBaseConfiguration
-    {
-      
+    {      
        // private readonly HomePage homePage;
-
-      
+             
         public HotelSearchSteps(SeleniumContext seleniumContext)
             : base((BoDi.IObjectContainer)seleniumContext)
         {

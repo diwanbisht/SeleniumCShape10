@@ -16,7 +16,6 @@ namespace SeleniumCShape10.Hooks
         {
             this._WebDriver = _WebDriver;
             this.CreateChromeDriver();
-
         }
       
         public IWebDriver _WebDriver { get; set; }

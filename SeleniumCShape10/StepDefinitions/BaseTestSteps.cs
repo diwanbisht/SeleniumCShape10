@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 namespace SeleniumCShape10.StepDefinitions
 {
     [Binding]
-    public class BaseTestSteps
+    public class BaseTestSteps   
     {
 
         private readonly SeleniumContext seleniumContext;
-
 
         public BaseTestSteps(SeleniumContext seleniumContext)
         {
