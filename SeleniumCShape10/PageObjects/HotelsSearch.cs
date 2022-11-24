@@ -11,8 +11,10 @@ namespace SeleniumCShape10.PageObjects
 {
     public class HotelsSearch
     {
-        IWebDriver driver = new ChromeDriver();
+        private readonly IWebDriver driver;
+
         public HotelsSearch(IWebDriver driver) => this.driver = driver;
+     
         public SelectElement Location => new SelectElement(driver.FindElement(By.Id("location")));
         public SelectElement Hotel => new SelectElement(driver.FindElement(By.Id("hotels")));
         public SelectElement Room_Type => new SelectElement(driver.FindElement(By.Id("room_type")));

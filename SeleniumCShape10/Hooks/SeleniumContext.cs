@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumCShape10.Commons;
+using SeleniumCShape10.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,9 +17,8 @@ namespace SeleniumCShape10.Hooks
         public SeleniumContext(IWebDriver _WebDriver)
         {
             this._WebDriver = _WebDriver;
-            this.CreateChromeDriver();
-        }
-      
+            //this.CreateChromeDriver();
+        }      
         public IWebDriver _WebDriver { get; set; }
 
         public void CreateChromeDriver()
@@ -39,13 +40,17 @@ namespace SeleniumCShape10.Hooks
 
         public void LoginToApplication()
         {
-            /*ExcelReaderHelper helper = new ExcelReaderHelper();
+            ExcelHelpers helper = new ExcelHelpers();
             Dictionary<string, string> dicValues = helper.ReadExcelRowByRow(1);
-            string BaseUrlfromExcel = dicValues["Baseurl"];
-            string UserName = dicValues["Baseurl"];
-            string passwrod = dicValues["Baseurl"];
-            new HomeLoginPage(webDriver).Login(BaseUrlfromExcel, UserName, passwrod);
-*/
+
+            string BaseUrlfromExcel = dicValues["BaseUrl"];
+            string UserName = dicValues["UserName"];
+            string passwrod = dicValues["Password"];
+            
+            this._WebDriver.Navigate().GoToUrl(BaseUrlfromExcel.ToString());
+           
+            new LoginPage(_WebDriver).UserLogin(UserName, passwrod);
+
         }
     }
 }

@@ -5,22 +5,38 @@ using BoDi;
 using log4net;
 using OpenQA.Selenium;
 using SeleniumCShape10.Commons;
+using SeleniumCShape10.PageObjects;
+using SeleniumCShape10.StepDefinitions;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace SeleniumCShape10.Hooks
 {
     [Binding]
     public class SpecflowBaseConfiguration
     {
+        private readonly LoginPage _loginPage;   
         private static SeleniumContext seleniumContext;
         private static ExtentTest featureName;
         private static ExtentTest scenario;
         private static ExtentReports extent;
         private readonly IObjectContainer objectContainer;
 
-        public SpecflowBaseConfiguration(IObjectContainer container)
+        private readonly IWebDriver driver;
+
+        private static readonly NameValueCollection ConfigValues = (NameValueCollection)ConfigurationManager.GetSection("LoginSection");
+
+        /*  public SpecflowBaseConfiguration(IObjectContainer container)
+          {
+              this.objectContainer = container;
+          }*/
+
+
+        public void LoginToApplication()
         {
-            this.objectContainer = container;
+            new SeleniumContext(driver).CreateChromeDriver();
         }
+
 
         [AfterScenario]
         public static void Takescreenshot()
@@ -35,24 +51,25 @@ namespace SeleniumCShape10.Hooks
             featureName = extent.CreateTest<Feature>(FeatureContext.Current.FeatureInfo.Title);
         }
 
-
         [BeforeTestRun]
         [Obsolete("Replaced by the automatic starter")]
         public static void RunBeforeAllTests()
         {
-            string path = "C:\\QA Reports\\path\\" + "ExtendReport_" + DateTime.Now.ToString("MM_dd_HH_mm") + ".html";
+            //string path = "C:\\QA Reports\\path\\" + "ExtendReport_" + DateTime.Now.ToString("MM_dd_HH_mm") + ".html";
+            string path = SystemUtils.GetTestReportFile() + "\\ExtendReport_" + DateTime.Now.ToString("MM_dd_HH_mm") + ".html";
             ExtentV3HtmlReporter htmlReporter = new ExtentV3HtmlReporter(path);
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             extent = new ExtentReports();
             extent.AttachReporter(htmlReporter);
-           // new SeleniumContext(_WebDriver).LoginToApplication();
+            SpecflowBaseConfiguration login = new SpecflowBaseConfiguration();
+            login.LoginToApplication();
         }
 
 
         [AfterTestRun]
         public static void RunAfterAllTests()
         {
-            seleniumContext.QuitDriver();
+            // seleniumContext.QuitDriver();
             extent.Flush();
         }
 

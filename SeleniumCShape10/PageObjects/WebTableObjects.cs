@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace SeleniumCShape10.PageObjects
 {
-    public class WebTableObjects
+    public class WebTableObjects 
     {
-        public IWebDriver driver;
-        public WebTableObjects(IWebDriver driver) => this.driver = driver;
+        private readonly IWebDriver driver;
+        public WebTableObjects(IWebDriver driver)
+        {
+            this.driver = driver;
+        }
 
         IWebElement Table => this.driver.FindElement(By.XPath("//table/tbody"));
         List<IWebElement> TableRows => this.driver.FindElements(By.XPath("//table/tbody/tr")).ToList();

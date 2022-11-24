@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using SeleniumCShape10.Hooks;
 using SeleniumCShape10.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,16 @@ namespace SeleniumCShape10.StepDefinitions
 {
 
     [Binding]
-    public class WebTebleSteps
+    public class WebTebleSteps : BaseTestSteps
     {
-        IWebDriver driver = new ChromeDriver();
+        private readonly WebTableObjects webTableObjects;
 
-     
+        public WebTebleSteps(SeleniumContext seleniumContext)
+            : base((SeleniumContext)(BoDi.IObjectContainer)seleniumContext)
+        {
+            this.webTableObjects = new WebTableObjects(driver);
+        }
+
 
         [Given(@"I Navigated to Test the WebTable")]
         public void GivenINavigatedToTestTheWebTable()

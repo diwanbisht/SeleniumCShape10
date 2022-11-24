@@ -1,6 +1,7 @@
 ﻿using AventStack.ExtentReports;
 using OpenQA.Selenium;
 using SeleniumCShape10.Hooks;
+using SeleniumCShape10.StepDefinitions;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
@@ -10,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace SeleniumCShape10.Commons
 {
-    public class SystemUtils  : SpecflowBaseConfiguration
+    public class SystemUtils  
     {      
-        public SystemUtils(SeleniumContext seleniumContext)
+       /* public SystemUtils(SeleniumContext seleniumContext)
           : base((BoDi.IObjectContainer)seleniumContext)
         {
             // this.homePage = new HomePage(this.Driver);
-        }
+        }*/
 
         public static string GetChromeDriverPath()
         {
@@ -32,6 +33,14 @@ namespace SeleniumCShape10.Commons
             // return TestDataFile + "\\TestData";
 
             return TestDataFile + "\\TestData" + "\\" + TestDataFileName;
+        }
+
+        public static string GetTestReportFile()
+        {
+            string TestDataFile = Directory.GetCurrentDirectory().Split("\\bin")[0];
+            // return TestDataFile + "\\TestData";
+
+            return TestDataFile + "\\TestReport";
         }
 
         public static string[] GetAllDirectoryInfo(string DriveName)
@@ -50,7 +59,6 @@ namespace SeleniumCShape10.Commons
 
         public static void TakeScreenShot()
         {
-
            // ITakesScreenshot screenShot = seleniumContext.
             /* ITakesScreenshot screenshotDriver = seleniumContext.webDriver as ITakesScreenshot;
 
@@ -73,8 +81,7 @@ namespace SeleniumCShape10.Commons
 
         public static void LogFailsTest()
         {
-            /*StringBuilder stringBuilder = new StringBuilder();
-         
+            /*StringBuilder stringBuilder = new StringBuilder();         
 
            // sb.Append("log something");
 /
